@@ -1,60 +1,46 @@
-## 📍 Project Overview  
+# 🧠 Wearable Data Extraction API
 
-The **Wearable Data Extraction API** is a fully automated system designed to **scrape, preprocess, and visualize product data** from leading wearable brands — **BoAt**, **Boult**, and **Noise**.  
+The **Wearable Data Extraction API** is an automated system built to scrape, clean, and visualize product data from major wearable brands — **BoAt**, **Boult**, and **Noise**.
 
-This project extracts rich product-level data (features, specifications, reviews, FAQs, and product details) directly from brand websites, cleans and merges them into structured datasets, and then **automatically uploads** the final outputs to **OneDrive** for **Power BI dashboard visualization**.  
+This project extracts product-related data (features, specifications, reviews, FAQs, and details) from brand websites, processes it into clean datasets, and automates the uploading of the final results to **OneDrive** for **Power BI dashboard** visualization.
 
-It supports both **automatic scheduled scraping** and **manual API endpoints** for on-demand scraping — enabling smooth, flexible, and continuous data collection.
-
----
-
-## 🎯 What This Project Does  
-
-### 🕸️ 1. Web Scraping  
-Each brand (BoAt, Boult, Noise) has its own **Selenium-based scraper** located inside the `scrapers/` folder.  
-The scraper:
-- Automatically reads category URLs from the `categories.csv` input file  
-- Extracts multiple data types:
-  - 🏷️ Product details  
-  - ⚙️ Specifications  
-  - ⭐ Customer reviews  
-  - 💬 FAQs  
-  - ✨ Features  
+It includes both **automatic scheduled scraping** and **manual API endpoints** for on-demand scraping.
 
 ---
 
-### 🧹 2. Preprocessing  
-After scraping, raw data passes through a sequence of **cleaner scripts** stored in the `preprocessor/` folder.  
-Each script:
-- Removes duplicates  
-- Fixes text and encoding issues  
-- Standardizes formats across all brands  
-- Ensures consistency before merging  
+## 🎯 What This Project Does
+
+### 🕸️ 1. Web Scraping
+Each brand (**BoAt**, **Boult**, **Noise**) has its own Selenium-based scraper.  
+The scraper automatically reads category URLs from a CSV input file and extracts data such as:
+
+- Product details  
+- Specifications  
+- Features  
+- FAQs  
+- Customer reviews  
 
 ---
 
-### 💾 3. Data Storage  
-Cleaned data from all categories of a single brand are **merged** and stored inside the `merged_data/` directory under that brand’s folder.  
-- No database is used — all processed outputs are stored as **CSV files**.  
-- The merged files act as the **final, analytics-ready datasets** for dashboard integration.  
+### 🧹 2. Preprocessing
+The raw scraped data passes through multiple cleaner scripts inside the `preprocessor/` folder.  
+Each script removes duplicates, fixes formatting issues, and standardizes data across all categories.
 
 ---
 
-### ⚙️ 4. Automation & Uploading  
-The project integrates seamlessly with **n8n**, an open-source automation workflow tool.  
-- After every successful scraping and preprocessing run,  
-  **n8n automatically uploads the cleaned and merged CSV files to OneDrive**.  
-- This ensures that Power BI always has access to the most up-to-date data without manual effort.  
+### 💾 3. Data Storage
+The cleaned data from all categories of a brand are merged and stored inside a `merged_data/` folder within that brand’s directory.  
+*(No database is used — all files are stored as CSV outputs.)*
 
 ---
 
-### 📊 5. Visualization  
-The final datasets stored on OneDrive are connected to **Power BI dashboards**, enabling:  
-- 📈 Brand-wise insights (BoAt, Boult, Noise)  
-- 🧩 Comparative analysis across features and pricing  
-- ⭐ Customer sentiment and review trend visualization  
-- 📅 Automated dashboard refresh using OneDrive-linked data  
+### ⚙️ 4. Automation & Uploading
+The project is integrated with **n8n**, a workflow automation tool.  
+After every successful run, **n8n automatically uploads the cleaned CSV files to OneDrive** for easy access and synchronization with Power BI.
 
 ---
 
-✨ This end-to-end system eliminates manual data collection, guarantees consistent cleaning, and automates data flow from **web to dashboard** — all with minimal supervision.
+### 📊 5. Visualization
+Power BI dashboards are connected to the OneDrive data folder to visualize the **latest cleaned data** for each brand.  
+This helps track new product launches, compare brand features, and monitor reviews in real time.
+
